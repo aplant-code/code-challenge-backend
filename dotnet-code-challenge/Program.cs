@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using dotnet_code_challenge.Output;
 using dotnet_code_challenge.Parsers;
 
 namespace dotnet_code_challenge
@@ -17,6 +18,8 @@ namespace dotnet_code_challenge
             
             var jsonContent = fileReader.ReadFile("FeedData/Wolferhampton_Race1.json");
             race = jsonParser.ProcessFileContent(jsonContent);
+            
+            RaceOutputter.OutputByHorsePrice(race);
         }
     }
 }
