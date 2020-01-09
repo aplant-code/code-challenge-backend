@@ -10,6 +10,11 @@ namespace dotnet_code_challenge
     {
         static void Main(string[] args)
         {
+            // TODO: Create some logic that loops through all files in the FeedData and loads them automatically, rather
+            // than picking out files specifically
+            
+            // TODO: Potentially use a factory to provide the correct parser based on extension. Could then just use
+            // the parser interface instead of concerete classes here.
             var xmlParser = new XmlFileParser();
             var jsonParser = new JsonFileParser();
 
