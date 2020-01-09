@@ -6,12 +6,14 @@ namespace dotnet_code_challenge.Output
 {
     public class RaceOutputter
     {
+        private const int HORSE_START_NUMBER = 1;
+        
         public static void OutputByHorsePrice(Race race)
         {
             Console.WriteLine($"=== {race.Name} ===");
             var horses = race.Horses.OrderBy(h => h.Price);
 
-            var number = 1;
+            var number = HORSE_START_NUMBER;
             
             foreach (var horse in horses)
             {
