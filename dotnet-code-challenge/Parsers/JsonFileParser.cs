@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using dotnet_code_challenge.Models;
+using Newtonsoft.Json;
+using System.Linq;
 
 namespace dotnet_code_challenge.Parsers
 {
@@ -6,7 +9,22 @@ namespace dotnet_code_challenge.Parsers
     {
         public Race ProcessFileContent(string fileContent)
         {
-            throw new System.NotImplementedException();
+            dynamic fileObject = JsonConvert.DeserializeObject(fileContent);
+            dynamic raceContent = fileObject.RawData;
+            IEnumerable<dynamic> horses = raceContent.Markets[0].Selections;
+
+            return new Race
+            {
+                Name = raceContent.FixtureName,
+                Horses = horses.Select(horse =>
+                {
+                    return new Horse
+                    {
+                        Name = horse.Tags.name,
+                        Price = horse.Price
+                    };
+                })
+            };
         }
     }
 }
