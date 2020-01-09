@@ -8,7 +8,7 @@ namespace dotnet_code_challenge.Output
     {
         public static void OutputByHorsePrice(Race race)
         {
-            Console.WriteLine($"=== Race: {race.Name} ===");
+            Console.WriteLine($"=== {race.Name} ===");
             var horses = race.Horses.OrderBy(h => h.Price);
 
             var number = 1;
@@ -18,6 +18,8 @@ namespace dotnet_code_challenge.Output
                 Console.WriteLine($"{number} {horse.Name, 0} ${horse.Price:f2}");
                 number++;
             }
+            
+            Console.WriteLine();
         }
     }
 }

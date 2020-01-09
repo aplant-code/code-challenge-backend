@@ -11,6 +11,8 @@ namespace dotnet_code_challenge.Parsers
         {
             dynamic fileObject = JsonConvert.DeserializeObject(fileContent);
             dynamic raceContent = fileObject.RawData;
+            
+            // TODO: Currently assuming based on data there is only ever one market - handle multiple markets instead?
             IEnumerable<dynamic> horses = raceContent.Markets[0].Selections;
 
             return new Race
